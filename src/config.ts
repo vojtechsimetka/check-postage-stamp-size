@@ -1,0 +1,38 @@
+export const SUPPORTED_LEVELS = ['critical', 'error', 'warn', 'info', 'verbose', 'debug'] as const
+export type SupportedLevels = typeof SUPPORTED_LEVELS[number]
+
+const DEFAULT_BEE_API_URL = 'http://localhost:1633'
+const DEFAULT_BEE_DEBUG_API_URL = 'http://localhost:1635'
+const DEFAULT_LOG_LEVEL = 'info'
+const DEFAULT_SLEEP_BETWEEN_UPLOADS = '1000'
+const DEFAULT_POSTAGE_STAMPS_AMOUNT = '10000'
+const DEFAULT_POSTAGE_STAMPS_DEPTH = '17'
+const DEFAULT_POSTAGE_STAMPS_USABLE_POLLING_FREQUENCY = '1000'
+const DEFAULT_POSTAGE_STAMPS_USABLE_TIMEOUT = '120000'
+const DEFAULT_UPLOAD_DATA_SIZE = '4096'
+
+const {
+  LOG_LEVEL,
+  SLEEP_BETWEEN_UPLOADS,
+  POSTAGE_STAMPS_AMOUNT,
+  POSTAGE_STAMPS_DEPTH,
+  BEE_API_URL,
+  BEE_DEBUG_API_URL,
+  POSTAGE_STAMPS_USABLE_POLLING_FREQUENCY,
+  POSTAGE_STAMPS_USABLE_TIMEOUT,
+  UPLOAD_DATA_SIZE,
+} = process.env
+
+export const logLevel = LOG_LEVEL ?? DEFAULT_LOG_LEVEL
+export const sleepBetweenUploads = Number.parseInt(SLEEP_BETWEEN_UPLOADS ?? DEFAULT_SLEEP_BETWEEN_UPLOADS)
+export const postageStampsAmount = POSTAGE_STAMPS_AMOUNT ?? DEFAULT_POSTAGE_STAMPS_AMOUNT
+export const postageStampsDepth = Number.parseInt(POSTAGE_STAMPS_DEPTH ?? DEFAULT_POSTAGE_STAMPS_DEPTH)
+export const beeApiUrl = BEE_API_URL ?? DEFAULT_BEE_API_URL
+export const beeDebugApiUrl = BEE_DEBUG_API_URL ?? DEFAULT_BEE_DEBUG_API_URL
+export const postageStampsUsablePollingFrequency = Number.parseInt(
+  POSTAGE_STAMPS_USABLE_POLLING_FREQUENCY ?? DEFAULT_POSTAGE_STAMPS_USABLE_POLLING_FREQUENCY,
+)
+export const postageStampsUsableTimeout = Number.parseInt(
+  POSTAGE_STAMPS_USABLE_TIMEOUT ?? DEFAULT_POSTAGE_STAMPS_USABLE_TIMEOUT,
+)
+export const uploadDataSize = Number.parseInt(UPLOAD_DATA_SIZE ?? DEFAULT_UPLOAD_DATA_SIZE)
